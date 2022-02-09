@@ -8,6 +8,4 @@ document.getElementById('login-submit').addEventListener("click", function () {
     } else {
         alert('thik Password de')
     }
-
-
 })
