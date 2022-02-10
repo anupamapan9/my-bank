@@ -1,4 +1,4 @@
-
+// Deposite button handels *************
 document.getElementById("diposite-button").addEventListener('click', function () {
 
 
@@ -23,9 +23,32 @@ document.getElementById("diposite-button").addEventListener('click', function ()
     const totalBalance = parseFloat(userBalance.innerText);
 
     const userNewBalance = depositAmount + totalBalance;
-    console.log(userNewBalance);
     userBalance.innerText = userNewBalance;
-
     depositeInput.value = "";
+})
 
+// withdraw button handel 
+document.getElementById("withdraw-button").addEventListener('click', function () {
+    //    withdraw balance come 
+
+    const withdrawTotal = document.getElementById("total-withdaw");
+    const totalWithdawValue = parseFloat(withdrawTotal.innerText);
+
+    const withdarwInput = document.getElementById("withdraw-amount");
+    const withdarwInputValue = parseFloat(withdarwInput.value);
+
+    const newTotalWithdarw = totalWithdawValue + withdarwInputValue;
+
+    withdrawTotal.innerText = newTotalWithdarw;
+    withdarwInput.value = '';
+
+    // balance update *******************
+    const currentBalance = document.getElementById("user-balance");
+    const currentBalanceValue = parseFloat(currentBalance.innerText);
+
+    const newBalance = currentBalanceValue - withdarwInputValue;
+    currentBalance.innerHTML = newBalance;
+
+
+    console.log(currentBalanceValue)
 })
