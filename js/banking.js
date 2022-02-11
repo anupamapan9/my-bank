@@ -1,12 +1,17 @@
+// new deposite by a user -------------------
+function getInputValue(inputId) {
+    const Input = document.getElementById(inputId)
+    const inputAmount = parseFloat(Input.value);
+    Input.value = "";
+    return inputAmount;
+
+}
+
+
 // Deposite button handels *************
 document.getElementById("diposite-button").addEventListener('click', function () {
-
-
     // deposite functions***********************
-    // new deposite by a user 
-
-    const depositeInput = document.getElementById("deposit-amount")
-    const depositAmount = parseFloat(depositeInput.value);
+    const depositAmount = getInputValue("deposit-amount");
 
     // user's current deposite 
     const depositeTotal = document.getElementById("total-diposite");
@@ -20,31 +25,27 @@ document.getElementById("diposite-button").addEventListener('click', function ()
     // balnace function ********************
 
     const userBalance = document.getElementById("user-balance")
-    const totalBalance = parseFloat(userBalance.innerText);
+    const totalBalancText = userBalance.innerText;
+    const totalBalanceValue = parseFloat(totalBalancText);
 
-    const userNewBalance = depositAmount + totalBalance;
+    const userNewBalance = depositAmount + totalBalanceValue;
     userBalance.innerText = userNewBalance;
-    depositeInput.value = "";
 })
 
 // withdraw button handel 
 document.getElementById("withdraw-button").addEventListener('click', function () {
     //    withdraw balance come 
-
+    const withdarwInputValue = getInputValue("withdraw-amount");
     const withdrawTotal = document.getElementById("total-withdaw");
     const totalWithdawValue = parseFloat(withdrawTotal.innerText);
-
-    const withdarwInput = document.getElementById("withdraw-amount");
-    const withdarwInputValue = parseFloat(withdarwInput.value);
-
     const newTotalWithdarw = totalWithdawValue + withdarwInputValue;
 
     withdrawTotal.innerText = newTotalWithdarw;
-    withdarwInput.value = '';
 
     // balance update *******************
     const currentBalance = document.getElementById("user-balance");
-    const currentBalanceValue = parseFloat(currentBalance.innerText);
+    const currentBalanceText = currentBalance.innerText;
+    const currentBalanceValue = parseFloat(currentBalanceText);
 
     const newBalance = currentBalanceValue - withdarwInputValue;
     currentBalance.innerHTML = newBalance;
